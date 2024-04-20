@@ -1,0 +1,114 @@
+body
+{
+  font-family:sans-serif;
+  background: -webkit-linear-gradient(to right, #FFE4C4, #DDA0DD);
+  background: linear-gradient(to right, #FFE4C4, #DDA0DD);
+  color:#0e1555;
+}		
+h1{
+    font-family:sans-serif;
+    background: -webkit-linear-gradient(to right, #FFE4C4, #DDA0DD);
+    background: linear-gradient(to right, #FFE4C4, #DDA0DD);
+    color:#0e1555;
+}		
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFE4C4;
+  padding: 30px; 
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center; /* Add this line */
+}
+
+.navbar a {
+  color: #0e1555;
+  text-decoration: none;
+  padding: 20px;
+  text-transform: uppercase; 
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar .right {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end; /* Change this line */
+}
+
+.navbar a:hover {
+  background-color: #0e1555;
+  color: #FFE4C4;
+}
+
+@media (max-width: 600px) {
+.navbar {
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar a {
+    padding: 10px;
+    font-size: 16px;
+}
+}             
+body{margin-top:20px;}
+.avatar{
+width:200px;
+height:200px;
+}	
+form{
+    width:35rem;
+    margin: auto;
+    color:#0e1555;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(14, 21, 85, 0.582);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px 25px;
+}
+button{
+    background-color: #DDA0DD;
+    color: #0e1555;
+    padding: 14px 20px;
+    border-radius: 5px;
+    margin: 7px 0;
+    width: 100%;
+    font-size: 18px;
+  }
+button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+.fa.fa-home {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: #DDA0DD;
+  color: #0e1555;
+  text-decoration: none;
+  border-radius: 5px;
+}
+@media screen and (max-width: 600px) {
+    form{
+      width: 25rem;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    form{
+      width: 20rem;
+    }
+  }
+  address {
+    margin-bottom: 1rem;
+    font-style: normal;
+    line-height: inherit;
+  }
+  .col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }

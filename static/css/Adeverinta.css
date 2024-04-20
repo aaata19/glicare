@@ -1,0 +1,134 @@
+body
+{
+  font-family:sans-serif;
+  background: -webkit-linear-gradient(to right, #FFE4C4, #DDA0DD);
+  background: linear-gradient(to right, #FFE4C4, #DDA0DD);
+  color:#0e1555;
+}		
+h1{
+    font-family:sans-serif;
+    background: -webkit-linear-gradient(to right, #FFE4C4, #DDA0DD);
+    background: linear-gradient(to right, #FFE4C4, #DDA0DD);
+    color:#0e1555;
+}	
+form{
+    width:35rem;
+    margin: auto;
+    color:#0e1555;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(14, 21, 85, 0.582);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px 25px;
+}
+button{
+  background-color: #DDA0DD;
+  color: #0e1555;
+  padding: 14px 20px;
+  border-radius: 5px;
+  margin: 7px 0;
+   width: 100%;
+    /* Remove or adjust this line */ 
+  font-size: 18px;
+}
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFE4C4;
+  padding: 30px; 
+}
+.navbar a {
+color: #0e1555;
+text-decoration: none;
+padding: 20px;
+text-transform: uppercase; 
+font-weight: bold;
+font-size: 20px;
+}
+.navbar a:hover {
+  background-color: #0e1555;
+  color: #FFE4C4;
+}
+
+@media (max-width: 600px) {
+.navbar {
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar a {
+    padding: 10px;
+    font-size: 16px;
+}
+}
+canvas {
+  width: 45vw;  /* Adjust as needed */
+  height: 75vh; /* Keep the height to half of the viewport height */
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+  #container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Add this line */
+}
+#imageCanvas {
+    margin-right: 20px;
+}
+.homeLinkContainer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.homeLink {
+  display: inline-block;
+}
+/* .myButton {
+  padding: 10px 20px; /* Adjust as needed to change the size of the button */
+  margin: 0 10px; /* Add some space between the buttons */
+} */
+
+/* Position the buttons in the right corner */
+body {
+  display: flex;
+  justify-content: flex-end;
+}
+#myForm {
+    margin-left: 20px;
+    
+}
+button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    text-align: center; /* Center the content */
+}
+
+ul li {
+    display: inline-block; /* Make the list items line up horizontally */
+}
+img {
+    transition: transform 0.2s; /* Animation */
+}
+img:hover {
+    transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+@media screen and (max-width: 600px) {
+    form{
+      width: 25rem;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    form{
+      width: 20rem;
+    }
+  }

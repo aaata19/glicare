@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="static/assets/registration-pictogram-2-svgrepo-com.svg" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel = "stylesheet" href = "../static/css/Profile.css">
+        <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+        <script src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+        <title>Profile</title>
+    </head>
+    <body>
+      <nav class="navbar">
+        <div>
+            <a href="{{ url_for('homePage') }}">Glicare</a>
+        </div>
+        <div class="right"> 
+            <a href="{{ url_for('editProfile') }}">Profile</a>
+            <a href="{{ url_for('medicalCertificate') }}">Adeverinta</a>
+            <a href="{{ url_for('forum') }}">Forum</a>
+            <a href="/logout">Log Out</a>
+        </div>
+    </nav>
+      <div class="container bootstrap snippets bootdey">
+            <h1 style="color:#0e1555">Edit Profile</h1>
+              <hr>
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-3">
+                <div class="text-center" style="color: #0e1555;">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                {% if user.type == 'd' %}
+                    <p>Doctor</p>
+                    {% else %}
+                    <p>Patient</p>
+                {% endif %}
+                  <h3></h3>
+                  <h6>Upload a different photo...</h6>
+                  <input type="file" class="form-control">
+                </div>
+              </div>
+              
+              <!-- edit form column -->
+              <div class="col-md-9 personal-info">
+                <!-- ALERTA  -->
+                <!-- <div class="alert alert-info alert-dismissable">
+                  <a class="panel-close close" data-dismiss="alert">×</a> 
+                  <i class="fa fa-coffee"></i>
+                  This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div> -->
+                <h3 style="color:#0e1555">Personal info</h3>
+                
+                <form action="#" method = "POST" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <!-- user id -->
+                        <label class="col-lg-3 control-label">Username:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="{{user.username}}" readonly>
+                          </div>
+                      </div>
+                      <!-- first name -->
+                  <div class="form-group">
+                    <label for="prenume"class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                      <input class="form-control" type="text" value="{{user.prenume}}" id="prenume" name="prenume">
+                    </div>
+                  </div>
+                  <!-- last name -->
+                  <div class="form-group">
+                    <label for="nume"class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                      <input class="form-control" type="text" value="{{user.nume}}" id="nume" name="nume">
+                    </div>
+                  </div>
+                  <!-- birthday -->
+                  <div class="form-group">
+                    <label for="data_nasterii" class="col-lg-3 control-label">Birthday:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="date" id ="data_nasterii" name="data_nasterii" value="{{user.data_nasterii}}">
+                    </div>
+                </div>
+                  <!-- email -->
+                  <div class="form-group">
+                    <label for="email" class="col-lg-3 control-label">Email:</label>
+                    <div class="col-lg-8">
+                      <input class="form-control" type="text" value="{{user.email}}" id="email" name="email" readonly>
+                    </div>
+                  </div>
+                  {% if user.type == 'p' %}
+                  <!-- sex -->
+                  <div class="form-group">
+                    <label class="col-lg-3 control-label">Gender:</label>
+                    <div class="col-lg-8">
+                      <div class="ui-select">
+                        <select id="gender" name="gender" class="form-control">
+                          <option value="Female" {% if user.sex == 'f' %} selected {% endif %}>Female</option>
+                          <option value="Male" {% if user.sex == 'm' %} selected {% endif %}>Male</option>
+                      </select>
+                      </div>
+                    </div>
+                  </div>
+                <!-- weight -->
+                    <div class="form-group">
+                            <label for="weight" class="col-lg-3 control-label">Weight (kg):</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" id="weight" name="weight" value="{{user.weight}}">
+                                </div>
+                    </div>
+                <!-- height -->
+                <div class="form-group">
+                    <label for="height" class="col-lg-3 control-label">Height (cm):</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" id="height" name="height" value="{{user.height}}" >
+                        </div>
+                </div>
+                <!-- doctor_id -->
+                <div class="form-group">
+                  <label for="doctor_id" class="col-lg-3 control-label">Doctor_id:</label>
+                      <div class="col-lg-8">
+                          <input class="form-control" type="text" id="doctor_id" name="doctor_id" value="{{user.doctor_id}}">
+                      </div>
+                </div>
+                {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+            {% else %}
+            <!-- cabinet -->
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Cabinet id:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="{{user.cabinet_id}}" readonly>
+                    </div>
+            </div>
+            {% endif %}
+                    <!-- Submit button -->
+        <button type="submit">Save</button>
+                </form>
+              </div>
+          </div>
+        </div>
+        <hr>
+        
+    </body>
+</html>

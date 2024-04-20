@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<link rel="icon" type="image/x-icon" href="static/assets/activity.svg" />
+    
+<link rel = "stylesheet" href = "../static/css/LogIn.css">
+    <title>LogIn</title>
+</head>
+<body>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method ="POST" action="/LogIn">
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+            <h3>Welcome back!</h3>
+        </div>
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Username -->
+            <label for="UserName">Your username</label>
+            <input type="text" placeholder="Enter Username" name="UserName" required>
+
+            <br><br>
+
+            <!-- Password -->
+            <label for="pswrd">Your password</label>
+            <input type="password" placeholder="Enter Password" name="pswrd" required>
+
+            <!-- sub container for the checkbox and forgot password link -->
+            <div class="subcontainer">
+                <p class="forgotpsd"> <a href="#">Forgot Password?</a></p>
+            </div>
+
+
+            <!-- Submit button -->
+            <button type="submit">Login</button>
+
+            <!-- Sign up link -->
+            <p class="register">Not a member?  <a href="{{ url_for ('signIn') }}">Register here!</a></p>
+
+        </div>
+
+    </form>
+</body>
+</html>

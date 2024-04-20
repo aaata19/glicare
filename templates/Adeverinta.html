@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/assets/registration-pictogram-2-svgrepo-com.svg" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel = "stylesheet" href = "../static/css/Profile.css">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+    <title>Medical Certificates</title>
+
+    <link rel = "stylesheet" href = "../static/css/Adeverinta.css">
+</head>
+<body>
+    <body>
+        <nav class="navbar">
+            <div>
+                <a href="{{ url_for('homePage') }}">Glicare</a>
+            </div>
+            <div class="right"> 
+                <a href="{{ url_for('editProfile') }}">Profile</a>
+                <a href="{{ url_for('medicalCertificate') }}">Adeverinta</a>
+                <a href="{{ url_for('forum') }}">Forum</a>
+                <a href="/logout">Log Out</a>
+            </div>
+        </nav>
+        {% if message %}
+        <p>{{ message }}</p>
+      {% endif %}
+    {% if user.type == 'p' %}
+    <h1>Your Medical Certificates</h1>
+    {% else %}
+    <h1>Medical Certificates</h1>
+    {% endif %}
+    {% if user.type == 'p' and user.doctor_id == None%}
+    <p>You need to have a doctor assigned to you in order to generate a certificate.</p>
+    {% else %}
+    <ul>
+        <!-- ARATA IMAGINILE -->
+        {% if images %}
+        <!-- Repeat this list item for each image -->
+            {% for id, image in images.items() %}
+            <li>
+                <img src="{{ url_for('static', filename='/' + image) }}" alt="Image" width="100" onclick="loadImage(event)" id="{{ id }}">
+            </li>
+            {% endfor %}
+        {% else %}
+            {% if user.type == 'p' %}
+            <p>You have no certificates available.</p>
+            {% else %}
+            <p>No certificates to review.</p>
+            {% endif %}
+        {% endif %}
+    </ul>
+    <!-- BUTON GENERATE -->
+    {% if user.type == 'p' %}
+    <div class="buttonContainer">
+        <button class="generateButton" type="button" onclick="showForm()">Generate</button>
+    </div>
+    {% endif%}
+
+    <div id="container">
+        <!-- CANVAS PENTRU A AFISA ADEVERINTA -->
+    <canvas id="imageCanvas"></canvas>
+    <!-- Form vizualizare -->
+    <form id="myForm" style="display: none;" action="#" method="POST">
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Submit button -->
+            {% if user.type == 'p' %}
+            <!-- buton pentru pacient -->
+            <button type="button" onclick="downloadDocument()">Download</button>
+
+            {% else %}
+                <button type="button" onclick="enableDrawing()">Sign</button>
+                <button id="submitDrawing" name="submitDrawing" type="submit" style="display: none;">Submit</button>
+            {%endif%}
+            <input type="hidden" id="imageId" name="imageId">
+        </div>
+    </form>
+
+    <form id="formGenerare" style="display: none;" action="#" method="POST">
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Submit button -->
+            <div class="form-group">
+                <label for="cnp">CNP:</label>
+                <input type="text" class="form-control" id="cnp" name = "cnp" required>
+            </div>
+            <div class="form-group">
+                <label for="adresa">Adress:</label>
+                <input type="text" class="form-control" id="adresa" name = "adresa" required>
+            </div>
+            <div class="form-group">
+                <label for="ocupatie">Occupation:</label>
+                <input type="text" class="form-control" id="ocupatie" name = "ocupatie" required>
+            </div>
+            <div class="form-group">
+                <label for="motiv">Reason:</label>
+                <input type="text" class="form-control" id="motiv" name = "motiv" required>
+                <p>Try to keep the reason short ex: insulin, rest etc.</p>
+            </div>
+            <div class="form-group">
+                <label for="loc">Place:</label>
+                <input type="text" class="form-control" id="loc" name = "loc" required>
+                <p>Try to keep the reason short ex: work, school, airport etc.</p>
+
+            </div>
+            <button type="submit">Generate</button>
+
+        </div>
+
+    </form>
+
+</div>
+<!-- <input type="hidden" id="canvasData" name="canvasData"> -->
+{% endif %}
+    <script src="static/js/adeverinta.js"></script>
+
+</body>
+</html>
